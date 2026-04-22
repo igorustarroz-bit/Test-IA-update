@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Semantic tokens – Light Base theme.
+  Source: Figma Web-DS-Foundations-1.0 > Color/theme/Light Base (node 7011:2699).
+
+  NOTE – Figma does NOT yet expose a Dark Base theme (confirmed via
+  figma.root.children enumeration). The `[data-theme="dark"]` block below is
+  a placeholder based on a mechanical light-inverse; values MUST be replaced
+  when the Celonis design team ships the Dark Base semantic tokens.
+*/
+:root,
+[data-theme="light"] {
+  /* Text */
+  --text-high: #000000;
+  --text-mid: #666666;
+  --text-low: #8e8d8d;
+  --text-inverse: #ffffff;
+  --text-difference: #ffffff;
+  --text-always-light: #ffffff;
+  --text-state-disabled: #8e8d8d;
+  --text-transparency-mid: rgb(0 0 0 / 0.70);
+  --text-transparency-low: rgb(0 0 0 / 0.40);
+  --text-success: #0b9e23;
+  --text-danger: #bf281b;
+
+  /* Background */
+  --background-base: #ffffff;
+  --background-secondary: #f5f5f5;
+  --background-secondary-alt: #f7f7f7;
+  --background-tertiary: #e5e5e5;
+  --background-quaternary: #cbcbcb;
+  --background-quinary: #767676;
+  --background-inverse: #000000;
+  --background-always-dark: #000000;
+  --background-accent-green: #5cfe50;
+  --background-accent-secondary: #04cd24;
+  --background-success: #d5ffd1;
+  --background-danger: #ffdfdc;
+  --background-state-disabled: #e5e5e5;
+  --background-transparency-mid: rgb(0 0 0 / 0.80);
+  --background-transparency-low: rgb(0 0 0 / 0.20);
+
+  /* Border */
+  --border-high: #000000;
+  --border-mid: #cbcbcb;
+  --border-mid-dark: #767676;
+  --border-low: #e5e5e5;
+  --border-inverse: #ffffff;
+  --border-state-disabled: #e5e5e5;
+  --border-success: #0b9e23;
+  --border-danger: #bf281b;
+
+  /* Graph */
+  --graph-1: #5cfe50;
+  --graph-2: #000000;
+  --graph-3: #666666;
+  --graph-4: #8e8d8d;
+  --graph-5: #d9d9d9;
+  --graph-6: #f5f5f5;
+  --graph-7: #ffffff;
+}
+
+[data-theme="dark"] {
+  /* ⚠ Placeholder inverse theme — replace when Dark Base ships in Figma. */
+  --text-high: #ffffff;
+  --text-mid: #cbcbcb;
+  --text-low: #8e8d8d;
+  --text-inverse: #000000;
+  --text-difference: #000000;
+  --text-always-light: #ffffff;
+  --text-state-disabled: #666666;
+  --text-transparency-mid: rgb(255 255 255 / 0.70);
+  --text-transparency-low: rgb(255 255 255 / 0.40);
+  --text-success: #5cfe50;
+  --text-danger: #ef5b4e;
+
+  --background-base: #000000;
+  --background-secondary: #1d1d1d;
+  --background-secondary-alt: #242424;
+  --background-tertiary: #333333;
+  --background-quaternary: #4d4d4d;
+  --background-quinary: #8e8d8d;
+  --background-inverse: #ffffff;
+  --background-always-dark: #000000;
+  --background-accent-green: #5cfe50;
+  --background-accent-secondary: #04cd24;
+  --background-success: #02410c;
+  --background-danger: #490e08;
+  --background-state-disabled: #333333;
+  --background-transparency-mid: rgb(255 255 255 / 0.80);
+  --background-transparency-low: rgb(255 255 255 / 0.20);
+
+  --border-high: #ffffff;
+  --border-mid: #4d4d4d;
+  --border-mid-dark: #8e8d8d;
+  --border-low: #333333;
+  --border-inverse: #000000;
+  --border-state-disabled: #333333;
+  --border-success: #5cfe50;
+  --border-danger: #ef5b4e;
+
+  --graph-1: #5cfe50;
+  --graph-2: #ffffff;
+  --graph-3: #cbcbcb;
+  --graph-4: #8e8d8d;
+  --graph-5: #4d4d4d;
+  --graph-6: #1d1d1d;
+  --graph-7: #000000;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background-color: var(--background-base);
+  color: var(--text-high);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

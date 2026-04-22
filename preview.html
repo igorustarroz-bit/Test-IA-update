@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Celonis Community · Foundations preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      /* Minimal mirror of tailwind.config.ts so this standalone HTML can be
+         opened without running Vite / Storybook. */
+      tailwind.config = {
+        theme: {
+          spacing: {
+            0: "0", s: "2px", "01": "4px", "02": "8px", "03": "12px",
+            "04": "16px", "05": "20px", "06": "24px", "07": "32px",
+            "08": "40px", "09": "56px", "10": "64px", "11": "80px", "12": "96px",
+            px: "1px",
+          },
+          borderRadius: {
+            none: "0", sm: "4px", md: "8px", lg: "12px", xl: "16px", pill: "999px", full: "9999px",
+          },
+          fontFamily: { sans: ["Poppins", "system-ui", "sans-serif"] },
+          fontSize: {
+            "p-m": ["14px", { lineHeight: "18px" }],
+            "p-xl": ["18px", { lineHeight: "24px" }],
+          },
+          extend: {
+            colors: {
+              grey: {
+                black: "#000000", 100: "#1d1d1d", 90: "#333333", 80: "#4d4d4d",
+                70: "#666666", 60: "#767676", 50: "#8e8d8d", 40: "#cbcbcb",
+                30: "#d9d9d9", 20: "#e5e5e5", 10: "#f5f5f5", white: "#ffffff",
+              },
+              "blue-celonis": {
+                100: "#000a3d", 90: "#001062", 80: "#001894", 70: "#0022ca",
+                60: "#0029ff", 50: "#2c4eff", 40: "#506cff", 30: "#8ea0ff",
+                20: "#c6cfff", 10: "#ebedff",
+              },
+              "green-celonis": {
+                100: "#02410c", 90: "#057016", 80: "#0b9e23", 70: "#04cd24",
+                60: "#56ed4b", 50: "#5cfe50", 40: "#7eff74", 30: "#9eff96",
+                20: "#b7ffb1", 10: "#d5ffd1",
+              },
+              yellow: {
+                100: "#4a3a04", 90: "#745b05", 80: "#ae8a0d", 70: "#e0b315",
+                60: "#ffcd1e", 50: "#ffda55", 40: "#ffe175", 30: "#ffe897",
+                20: "#fff0ba", 10: "#fff6d5",
+              },
+              red: {
+                100: "#490e08", 90: "#621009", 80: "#81180f", 70: "#bf281b",
+                60: "#ea3424", 50: "#ef5b4e", 40: "#f47468", 30: "#f8968d",
+                20: "#ffb5af", 10: "#ffdfdc",
+              },
+              text: {
+                high: "var(--text-high)",
+                mid: "var(--text-mid)",
+                low: "var(--text-low)",
+                inverse: "var(--text-inverse)",
+                success: "var(--text-success)",
+                danger: "var(--text-danger)",
+              },
+              bg: {
+                base: "var(--background-base)",
+                secondary: "var(--background-secondary)",
+                tertiary: "var(--background-tertiary)",
+                inverse: "var(--background-inverse)",
+                "accent-green": "var(--background-accent-green)",
+              },
+              border: {
+                high: "var(--border-high)",
+                mid: "var(--border-mid)",
+                low: "var(--border-low)",
+                inverse: "var(--border-inverse)",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root,
+      [data-theme="light"] {
+        --text-high: #000000; --text-mid: #666666; --text-low: #8e8d8d;
+        --text-inverse: #ffffff; --text-success: #0b9e23; --text-danger: #bf281b;
+        --background-base: #ffffff; --background-secondary: #f5f5f5;
+        --background-tertiary: #e5e5e5; --background-inverse: #000000;
+        --background-accent-green: #5cfe50;
+        --border-high: #000000; --border-mid: #cbcbcb; --border-low: #e5e5e5;
+        --border-inverse: #ffffff;
+      }
+      [data-theme="dark"] {
+        --text-high: #ffffff; --text-mid: #cbcbcb; --text-low: #8e8d8d;
+        --text-inverse: #000000; --text-success: #5cfe50; --text-danger: #ef5b4e;
+        --background-base: #000000; --background-secondary: #1d1d1d;
+        --background-tertiary: #333333; --background-inverse: #ffffff;
+        --background-accent-green: #5cfe50;
+        --border-high: #ffffff; --border-mid: #4d4d4d; --border-low: #333333;
+        --border-inverse: #000000;
+      }
+      body { font-family: "Poppins", system-ui, sans-serif; background: var(--background-base); color: var(--text-high); }
+      code { background: var(--background-secondary); padding: 2px 4px; border-radius: 4px; font-size: 12px; }
+    </style>
+  </head>
+  <body class="antialiased">
+    <header class="px-08 py-07 border-b border-border-low flex items-center justify-between bg-bg-base sticky top-0 z-10">
+      <div class="flex items-baseline gap-03">
+        <span class="text-sm uppercase tracking-wider text-text-mid">Celonis · Community</span>
+        <h1 class="text-2xl font-semibold">Design System · MVP preview</h1>
+      </div>
+      <div class="flex items-center gap-02">
+        <span class="text-sm text-text-mid">Theme</span>
+        <button id="themeToggle"
+          class="h-08 px-04 rounded-pill bg-bg-inverse text-text-inverse text-sm font-medium">
+          Toggle
+        </button>
+      </div>
+    </header>
+
+    <main class="px-08 py-08 flex flex-col gap-10 max-w-[1280px] mx-auto">
+      <!-- Primitive ramps -->
+      <section class="flex flex-col gap-05">
+        <div>
+          <h2 class="text-3xl font-semibold">Primitive colors</h2>
+          <p class="text-p-m text-text-mid">Raw palettes from Web‑DS‑Foundations‑1.0.</p>
+        </div>
+        <div id="ramps" class="flex flex-col gap-05"></div>
+      </section>
+
+      <!-- Semantic tokens -->
+      <section class="flex flex-col gap-05">
+        <div>
+          <h2 class="text-3xl font-semibold">Semantic tokens</h2>
+          <p class="text-p-m text-text-mid">Theme‑aware tokens. Toggle theme to compare.</p>
+        </div>
+        <div id="semantic" class="flex flex-col gap-05"></div>
+      </section>
+
+      <!-- Typography -->
+      <section class="flex flex-col gap-05">
+        <h2 class="text-3xl font-semibold">Typography</h2>
+        <div class="flex flex-col gap-04">
+          <div><span class="text-sm text-text-mid block">Display 5xl</span><span class="text-[56px] leading-[64px] font-semibold">Run on data</span></div>
+          <div><span class="text-sm text-text-mid block">Display 4xl</span><span class="text-[40px] leading-[48px] font-semibold">Process excellence</span></div>
+          <div><span class="text-sm text-text-mid block">Heading 2xl</span><span class="text-[24px] leading-[32px] font-semibold">Build with Celonis</span></div>
+          <div><span class="text-sm text-text-mid block">Paragraph XL (18/24)</span><span class="text-p-xl">The quick brown fox jumps over the lazy dog.</span></div>
+          <div><span class="text-sm text-text-mid block">Paragraph M (14/18)</span><span class="text-p-m">The quick brown fox jumps over the lazy dog.</span></div>
+        </div>
+      </section>
+
+      <!-- Spacing -->
+      <section class="flex flex-col gap-05">
+        <h2 class="text-3xl font-semibold">Spacing scale</h2>
+        <div id="spacing" class="flex flex-col gap-02"></div>
+      </section>
+
+      <!-- Radius -->
+      <section class="flex flex-col gap-05">
+        <h2 class="text-3xl font-semibold">Radius scale</h2>
+        <div id="radius" class="grid grid-cols-6 gap-05"></div>
+      </section>
+
+      <!-- Buttons -->
+      <section class="flex flex-col gap-05">
+        <h2 class="text-3xl font-semibold">Button variants</h2>
+        <div class="flex flex-wrap gap-03 items-center">
+          <button class="h-09 px-05 rounded-pill bg-green-celonis-50 text-grey-black font-medium hover:bg-green-celonis-60">Primary</button>
+          <button class="h-09 px-05 rounded-pill bg-bg-inverse text-text-inverse font-medium hover:bg-grey-90">Secondary</button>
+          <button class="h-09 px-05 rounded-pill bg-transparent text-text-high border border-border-mid font-medium hover:bg-bg-secondary">Tertiary</button>
+          <button class="h-09 px-05 rounded-pill bg-transparent text-text-high font-medium hover:bg-bg-secondary">Ghost</button>
+          <button class="h-09 px-05 rounded-pill bg-red-70 text-grey-white font-medium hover:bg-red-80">Danger</button>
+          <button disabled class="h-09 px-05 rounded-pill bg-bg-tertiary text-text-low font-medium cursor-not-allowed">Disabled</button>
+        </div>
+      </section>
+
+      <footer class="text-sm text-text-mid pt-07 border-t border-border-low">
+        Static preview of the Celonis Community MVP. For the full interactive DS run <code>npm run storybook</code>.
+      </footer>
+    </main>
+
+    <script>
+      const primitives = {
+        grey:          { black:"#000000",100:"#1d1d1d",90:"#333333",80:"#4d4d4d",70:"#666666",60:"#767676",50:"#8e8d8d",40:"#cbcbcb",30:"#d9d9d9",20:"#e5e5e5",10:"#f5f5f5",white:"#ffffff" },
+        "blue-celonis":{ 100:"#000a3d",90:"#001062",80:"#001894",70:"#0022ca",60:"#0029ff",50:"#2c4eff",40:"#506cff",30:"#8ea0ff",20:"#c6cfff",10:"#ebedff" },
+        "green-celonis":{100:"#02410c",90:"#057016",80:"#0b9e23",70:"#04cd24",60:"#56ed4b",50:"#5cfe50",40:"#7eff74",30:"#9eff96",20:"#b7ffb1",10:"#d5ffd1" },
+        yellow:        { 100:"#4a3a04",90:"#745b05",80:"#ae8a0d",70:"#e0b315",60:"#ffcd1e",50:"#ffda55",40:"#ffe175",30:"#ffe897",20:"#fff0ba",10:"#fff6d5" },
+        red:           { 100:"#490e08",90:"#621009",80:"#81180f",70:"#bf281b",60:"#ea3424",50:"#ef5b4e",40:"#f47468",30:"#f8968d",20:"#ffb5af",10:"#ffdfdc" },
+      };
+      const semantic = {
+        text:       ["high","mid","low","inverse","success","danger"],
+        background: ["base","secondary","tertiary","inverse","accent-green"],
+        border:     ["high","mid","low","inverse"],
+      };
+      const spacing = { 0:0, s:2, "01":4,"02":8,"03":12,"04":16,"05":20,"06":24,"07":32,"08":40,"09":56,"10":64,"11":80,"12":96 };
+      const radius  = { none:0, sm:4, md:8, lg:12, xl:16, pill:9999 };
+
+      /* Build color ramps */
+      const rampsEl = document.getElementById("ramps");
+      for (const [name, shades] of Object.entries(primitives)) {
+        const section = document.createElement("section");
+        section.className = "flex flex-col gap-02";
+        section.innerHTML = `<h3 class="text-xl font-semibold capitalize">${name.replace("-"," ")}</h3>`;
+        const grid = document.createElement("div");
+        grid.className = "grid grid-cols-12 gap-02";
+        for (const [shade, hex] of Object.entries(shades)) {
+          grid.innerHTML += `
+            <div class="rounded-md overflow-hidden border border-border-low">
+              <div style="background:${hex};height:64px;width:100%"></div>
+              <div class="px-02 py-01 bg-bg-base">
+                <div class="text-xs font-medium">${shade}</div>
+                <div class="text-[10px] text-text-mid">${hex}</div>
+              </div>
+            </div>`;
+        }
+        section.appendChild(grid);
+        rampsEl.appendChild(section);
+      }
+
+      /* Semantic tokens */
+      const semanticEl = document.getElementById("semantic");
+      const prefixMap = { text:"--text-", background:"--background-", border:"--border-" };
+      for (const [group, items] of Object.entries(semantic)) {
+        const section = document.createElement("section");
+        section.className = "flex flex-col gap-02";
+        section.innerHTML = `<h3 class="text-xl font-semibold capitalize">${group}</h3>`;
+        const grid = document.createElement("div");
+        grid.className = "grid grid-cols-4 gap-03";
+        for (const it of items) {
+          grid.innerHTML += `
+            <div class="rounded-md overflow-hidden border border-border-low">
+              <div style="background:var(${prefixMap[group]}${it});height:64px"></div>
+              <div class="px-03 py-02 bg-bg-base">
+                <div class="text-sm font-medium">${group}/${it}</div>
+                <div class="text-xs text-text-mid">var(${prefixMap[group]}${it})</div>
+              </div>
+            </div>`;
+        }
+        section.appendChild(grid);
+        semanticEl.appendChild(section);
+      }
+
+      /* Spacing */
+      const spacingEl = document.getElementById("spacing");
+      for (const [key, value] of Object.entries(spacing)) {
+        spacingEl.innerHTML += `
+          <div class="grid grid-cols-[80px_80px_1fr] items-center gap-04">
+            <div class="text-sm font-medium">${key}</div>
+            <div class="text-sm text-text-mid">${value}px</div>
+            <div style="background:#5cfe50;height:12px;width:${Math.max(value,2)}px;border-radius:4px"></div>
+          </div>`;
+      }
+
+      /* Radius */
+      const radiusEl = document.getElementById("radius");
+      for (const [name, value] of Object.entries(radius)) {
+        radiusEl.innerHTML += `
+          <div class="flex flex-col items-center gap-02">
+            <div style="background:#5cfe50;height:96px;width:96px;border-radius:${value}px;border:1px solid var(--border-high)"></div>
+            <div class="text-sm font-medium">${name}</div>
+            <div class="text-xs text-text-mid">${value >= 999 ? "pill" : value + "px"}</div>
+          </div>`;
+      }
+
+      /* Theme toggle */
+      document.getElementById("themeToggle").addEventListener("click", () => {
+        const html = document.documentElement;
+        html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "name": "celonis-community",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Celonis Community Site – code implementation of the Figma design system (React + Tailwind + GSAP + Storybook).",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "gsap": "^3.12.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.3.5",
+    "@storybook/addon-themes": "^8.3.5",
+    "@storybook/blocks": "^8.3.5",
+    "@storybook/react": "^8.3.5",
+    "@storybook/react-vite": "^8.3.5",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.2",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "storybook": "^8.3.5",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8"
+  }
+}

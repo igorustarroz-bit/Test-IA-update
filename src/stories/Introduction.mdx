@@ -1,0 +1,32 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Foundations/Introduction" />
+
+# Celonis Community · Design System
+
+This Storybook is the code implementation of the Celonis Community design
+system. Foundations (colors, typography, spacing, radius) come from
+**Web-DS-Foundations-1.0** and components from **Web-DS-Components**.
+
+## Stack
+
+- **React 18** + **TypeScript** for components
+- **Tailwind CSS** wired to Figma tokens via `tailwind.config.ts`
+- **CSS variables** for theming (Light / Dark)
+- **GSAP** for motion (hover lifts, scroll reveals)
+- **Storybook 8 + Vite** for visual docs
+
+## Theme switch
+
+Use the theme toggle in the toolbar (sun/moon icon) to switch between
+`Light` and `Dark`. Dark tokens are currently a placeholder – will be
+replaced once Dark Base is exported from Figma.
+
+## Token philosophy
+
+- Primitive colors → `bg-blue-celonis-60`, `text-red-70`, etc.
+- Semantic tokens → `bg-bg-base`, `text-text-high`, `border-border-low` (via CSS vars)
+- Spacing follows Figma numeric scale: `p-04` = 16px, `gap-02` = 8px, etc.
+
+Explore the sections in the sidebar to see each foundation and the first
+MVP components (`Button`, `Card`, `Badge`).
