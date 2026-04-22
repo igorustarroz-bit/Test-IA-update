@@ -19,6 +19,14 @@ const config: StorybookConfig = {
   typescript: {
     reactDocgen: "react-docgen-typescript",
   },
+  // Allow the GitHub Pages workflow to override Vite's base path via env so
+  // Storybook's built assets resolve under /<repo>/ instead of /.
+  viteFinal: async (viteConfig) => {
+    if (process.env.STORYBOOK_BASE_PATH) {
+      viteConfig.base = process.env.STORYBOOK_BASE_PATH;
+    }
+    return viteConfig;
+  },
 };
 
 export default config;

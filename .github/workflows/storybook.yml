@@ -1,0 +1,56 @@
+name: Deploy Storybook to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Minimum permissions required by actions/deploy-pages@v4
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one concurrent deploy — newer runs cancel older ones
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Storybook
+        env:
+          # GitHub Pages project sites are served from /<repo>/ — Storybook
+          # needs Vite's `base` to match so assets resolve correctly.
+          STORYBOOK_BASE_PATH: /Test-IA-update/
+        run: npm run build-storybook -- --output-dir ./storybook-static
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./storybook-static
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
